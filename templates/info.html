@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<body style="text-align:center; background-color: #F2D16B">
+<div style="font-family: 'Signika Negative', sans-serif; margin: 100px; margin-top: -25px">
+    <h5>WeirdText encoding and decoding
+    WeirdText is a text encoding.
+    It is not “encryption” because humans can usually read it quite easily. But machines may
+    find it difficult to read without the list of original words.   Except of having fun, there are
+    real-world applications for this, e.g. if encryption is forbidden by law in your country, but
+    you still don’t want your email content to get automatically processed somehow.</h5><br><br>
+    <h3>Encoding</h3><br>
+    <h5>For each original word in the original text, the first and last character of is in the same
+    position, but all the characters in the middle of the word are shuffled (permutated).   If possible,
+    the resulting “encoded” word MUST NOT be the same as the original word.
+    Everything else (whitespace, punctuation, etc.) stay like in the original.   To make decoding by a
+    machine possible, encoder also output a sorted list of original words (only
+    include words that got shuffled, not text that did not).
+    The composite output of the encoder (see example below) contains encoded text
+        (WeirdText) and also the sorted list of original words.</h5><br><br>
+    <h3>Decoding</h3><br>
+    <h5>For decoding composite text, first do a simple check whether the text looks like composite
+    output of encoder. If not, is raised some reasonable exception.
+    Then, from the encoded the words list are used to decode the text.
+    Decoded output should, as far as possible, be identical to the original text. In case of
+    ambiguities (some encoded word could have been multiple original words), decoding
+    errors are acceptable.</h5><br><br>
+    <h3>ExampleOriginal Text:</h3><br>
+    <h5 class="text-primary">‘This is a long looong test sentence,’<br>
+        ‘with some big (biiiiig) words!’</h5><br><br>
+    <h3>Encoded Text (see comment above):</h3><br>
+    <h5 class="text-primary">‘—weird—’<br>
+        ‘Tihs is a lnog loonog tset sntceene,’<br>
+        ‘wtih smoe big (biiiiig) wdros!’<br>
+        ‘—weird—’</h5><br>
+    <h5 class="text-primary">‘long looong sentence some test This with words’</h5><br><br>
+    <h3>Decoded Text:</h3><br>
+    <h5 class="text-primary">‘This is a long looong test sentence,’<br>
+        ‘with some big (biiiiig) words!’</h5><br>
+</div>
+</body>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<body style="text-align:center; background-color: orange;">
+    <form action="/v1/decode" method="post">
+        <textarea type="text" name="encoded" rows="8" cols="100" placeholder="To decode text copy all encoded text and paste it here. Be careful. It have to be all text, including: '\n-weird-\n' twice."></textarea><br><br>
+        <button type="submit" class="btn btn-primary">Decode</button>
+    </form><br>
+    <h1>{{to_decode |safe}}</h1><br>
+
+</body>
+{% endblock %}
+

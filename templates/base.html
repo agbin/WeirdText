@@ -1,0 +1,41 @@
+<html>
+    <head>
+
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+          <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css?family=Signika+Negative" rel="stylesheet">
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+          <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    </head>
+
+
+
+    <body >
+    <nav class="navbar navbar-expand-sm navbar-dark" style="border-bottom: 1px solid white; background-color: #3366cc ">
+      <!-- Links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('home') }}"><h5 style="font-family: 'Satisfy', cursive;">Weird Text</h5></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('info') }}">Info</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('encode') }}">Encode</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('decode') }}">Decode</a>
+        </li>
+      </ul>
+    </nav><br>
+    <div><h1 style="font-family: 'Satisfy', cursive;">Weird Text</h1></div>
+    <br><br>
+        {% block content %}{% endblock %}
+    </body>
+
+</html>
