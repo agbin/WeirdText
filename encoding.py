@@ -51,6 +51,5 @@ def decode(encoded):
                 text_to_encoded = re.sub(b, a, text_to_encoded)
     return text_to_encoded
 
-print(decode("'\n-weird-\n' 'Tihs is a lnog loonog tset sntceene,\n' 'wtih smoe big (biiiiig) wdros!' '\n-weird-\n' 
-'long looong sentence some test This with words'"))
+print(decode("'\n-weird-\n' 'Tihs is a lnog loonog tset sntceene,\n' 'wtih smoe big (biiiiig) wdros!' '\n-weird-\n' 'long looong sentence some test This with words'"))
 
