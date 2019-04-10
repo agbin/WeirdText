@@ -6,11 +6,11 @@ For each original word in the original text, the first and last character stay i
 From the encoded the words list are used to decode the text. Decoded output should, as far as possible, be identical to the original text.
 
 
-Application created for recruitment purposes, used for encoding and decoding text in the Weird Text standard. It was written using Python 3.7 and is compatible with 3.6.
+Application created for recruitment purposes. It was written using Python 3.7 and is compatible with 3.6.
 
 Testing: python -m unittest.
 
-URL: https://weirdtext.herokuapp.com
+URL: https://weird-text.herokuapp.com
 
 To use the online api send a POST request to one of the endpoints with text included as data in the request body. 
 
