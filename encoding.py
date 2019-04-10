@@ -33,6 +33,7 @@ def garble(sentence):
     encoded_text = SEPARATOR + sentence + SEPARATOR + words_sorted
     return encoded_text
 
+
 text = "'This is a long looong test sentence,\n' 'with some big " \
        "(biiiiig) words!'"
 print(garble(text))
