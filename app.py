@@ -10,7 +10,7 @@ def home():
     return render_template("weird.html")
 
 
-@app.route('/v1/encode', methods=['GET','POST'])
+@app.route('/v1/encode', methods=['GET', 'POST'])
 def encode():
     if request.method == "POST":
         sentence = request.form["text"]
@@ -20,7 +20,7 @@ def encode():
     return render_template("encode.html")
 
 
-@app.route('/v1/decode', methods=['GET','POST'])
+@app.route('/v1/decode', methods=['GET', 'POST'])
 def decode():
     if request.method == "POST":
         encoded = request.form["encoded"]
@@ -33,8 +33,6 @@ def decode():
 @app.route("/info")
 def info():
     return render_template("info.html")
-
-
 
 
 if __name__ == '__main__':

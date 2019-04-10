@@ -10,10 +10,13 @@ class TestEncode(unittest.TestCase):
 
 class TestDecode(unittest.TestCase):
     # def test_for_one_word_decode(self):
-    #     self.assertEqual(decode("'\n-weird-\n' 'coiknha' '\n-weird-\n' 'choinka'"), 'choinka')
+    #     self.assertEqual(decode("'\n-weird-\n' 'coiknha'
+    # '\n-weird-\n' 'choinka'"), 'choinka')
     # def test_for_no_word_decode(self):
     #     self.assertEqual(decode("'\n-weird-\n' '\n-weird-\n'"), '')
     def test_for_short_words_decode(self):
-        self.assertEqual(decode("\n-weird-\n ala ma raz dwa lat \n-weird-\n"), 'ala ma raz dwa lat')
+        self.assertEqual(decode("\n-weird-\n ala ma raz dwa lat \n-weird-\n"),
+                         'ala ma raz dwa lat')
+
 
 

@@ -33,6 +33,7 @@ def garble(sentence):
     encoded_text = SEPARATOR + sentence + SEPARATOR + words_sorted
     return encoded_text
 
+
 print(garble("'This is a long looong test sentence,\n' 'with some big (biiiiig) words!'"))
 
 
@@ -51,5 +52,8 @@ def decode(encoded):
                 text_to_encoded = re.sub(b, a, text_to_encoded)
     return text_to_encoded
 
-print(decode("'\n-weird-\n' 'Tihs is a lnog loonog tset sntceene,\n' 'wtih smoe big (biiiiig) wdros!' '\n-weird-\n' 'long looong sentence some test This with words'"))
+
+encoded = "'\n-weird-\n' 'Tihs is a lnog loonog tset sntceene,\n' 'wtih smoe big (biiiiig) wdros!' " \
+          "'\n-weird-\n' 'long looong sentence some test This with words'"
+print(decode(encoded))
 
