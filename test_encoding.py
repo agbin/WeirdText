@@ -16,4 +16,4 @@ class TestDecode(unittest.TestCase):
     #     self.assertEqual(decode("'\n-weird-\n' '\n-weird-\n'"), '')
     def test_for_short_words_decode(self):
         self.assertEqual(decode("\n-weird-\n ala ma raz dwa lat \n-weird-\n"),
-                         'ala ma raz dwa lat')
+                         'ala ma raz dwa lat1')
