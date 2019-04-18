@@ -32,7 +32,7 @@ jobs:
       - run:
           name: Deploy Master to Heroku
           command: |
-            git push https://heroku:3d2d3fb9-9701-49c0-a519-09e7e0a4fe3d@git.heroku.com/weird-text.git master
+            git push --force https://heroku:3d2d3fb9-9701-49c0-a519-09e7e0a4fe3d@git.heroku.com/weird-text.git master
 
 workflows:
   version: 2
