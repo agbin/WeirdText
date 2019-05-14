@@ -3,12 +3,14 @@ import re
 
 
 def shuffle_string(string):
+    # This function shuffles a string
     chars = list(string)
     random.shuffle(chars)
     return ''.join(chars)
 
 
 def garble_word(word):
+    # This function connects original first and last letters with shuffled midst
     # No operation needed on sufficiently small words
     # (Also, main algorithm requires word length >= 2)
     if len(word) <= 3:
@@ -19,16 +21,26 @@ def garble_word(word):
 
 
 def garble(sentence):
+    # This function return encoded text
+    # The SEPARATROR is separating the original text from encoded text
     SEPARATOR = "\n-weird-\n"
+    # Find all words consist of more than 3 letters and put it into list named "words"
     tokenize_re = re.compile(r'(\w\w\w+)', re.U)
     words = tokenize_re.findall(sentence)
+    # letters in "word" can't be the same, example: "biiiiig"
     words = [word for word in words if (word[1:-1])[1:] != (word[1:-1])[:-1]]
+    # sort words in the "words" list alphabetically
     words_sorted = sorted(words, key=str.lower)
-    wodswym = [garble_word(word) for word in words if word]
+    # encode items in "words" using  function garble_word(word)
+    encoded_part_of_words = [garble_word(word) for word in words if word]
+    # If item is the same as before, use "garble_word(word)" again,
+    # else replace item in "words" with exact item in "encoded_part_of_words"
+    # Replace word containing encoded content with original word in original sentence
     for i in range(0, len(words)):
-        while words[i] == wodswym[i]:
-            wodswym[i] = garble_word(words[i])
-        sentence = re.sub(words[i], wodswym[i], sentence)
+        while words[i] == encoded_part_of_words[i]:
+            encoded_part_of_words[i] = garble_word(words[i])
+        sentence = re.sub(words[i], encoded_part_of_words[i], sentence)
+    # Exchange a list "words_sorted" into string and return it
     words_sorted = ' '.join(words_sorted)
     encoded_text = SEPARATOR + sentence + SEPARATOR + words_sorted
     return encoded_text
@@ -40,19 +52,22 @@ print(garble(text))
 
 
 def decode(encoded):
-    t = encoded
-    text_to_encoded = t[(t.find('-weird-')+9):(t.rfind('-weird-')-2)]
+    # This function return decoded text
+    # Find text to decode (between two separators: '-weird-')
+    decoding = encoded[(encoded.find('-weird-')+9):(encoded.rfind('-weird-')-2)]
+    # Find all items consist of 4 or more letters and put it into list named "decoding_list"
     tokenize_re = re.compile(r'(\w\w\w\w+)', re.U)
-    text_to_encoded_list = tokenize_re.findall(text_to_encoded)
-    original_words2 = t[(t.rfind('-weird-')+9)::]
-    original_words2 = tokenize_re.findall(original_words2)
-    for b in text_to_encoded_list:
-        # print("b", b)
-        for a in original_words2:
-            # print("a", a)
+    decoding_list = tokenize_re.findall(decoding)
+    # Find start of original words (arranged alphabetically)
+    original_words = encoded[(encoded.rfind('-weird-')+9)::]
+    # Find all items in original_words and put it into list named "original_words"
+    original_words = tokenize_re.findall(original_words)
+    # In decoding_list exchange encoded word with decoded
+    for b in decoding_list:
+        for a in original_words:
             if a[0] == b[0] and a[-1] == b[-1] and len(a) == len(b):
-                text_to_encoded = re.sub(b, a, text_to_encoded)
-    return text_to_encoded
+                decoding = re.sub(b, a, decoding)
+    return decoding
 
 
 encoded = "'\n-weird-\n' 'Tihs is a lnog loonog tset sntceene,\n' " \
