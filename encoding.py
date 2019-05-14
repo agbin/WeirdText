@@ -6,6 +6,7 @@ def shuffle_string(string):
     # This function shuffles a string
     chars = list(string)
     random.shuffle(chars)
+
     return ''.join(chars)
 
 
