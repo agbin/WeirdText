@@ -55,17 +55,21 @@ print(garble(text))
 
 
 def decode(encoded):
-    # This function return decoded text
-    # Find text to decode (between two separators: '-weird-')
-    decoding = encoded[(encoded.find('-weird-')+9):(encoded.rfind('-weird-')-2)]
-    # Find all items consist of 4 or more letters and put it into list named "decoding_list"
+    # This function return decoded text.
+    # Find text to decode (between two separators: '-weird-').
+    start_point = encoded.find('-weird-')+9
+    end_point = encoded.rfind('-weird-')-2
+    decoding = encoded[start_point:end_point]
+    # Find all items consist of 4 or more letters and put it into list
+    # named "decoding_list".
     tokenize_re = re.compile(r'(\w\w\w\w+)', re.U)
     decoding_list = tokenize_re.findall(decoding)
-    # Find start of original words (arranged alphabetically)
+    # Find start of original words (arranged alphabetically).
     original_words = encoded[(encoded.rfind('-weird-')+9)::]
-    # Find all items in original_words and put it into list named "original_words"
+    # Find all items in original_words and put it into list named
+    # "original_words".
     original_words = tokenize_re.findall(original_words)
-    # In decoding_list exchange encoded word with decoded
+    # In decoding_list exchange encoded word with decoded.
     for b in decoding_list:
         for a in original_words:
             if a[0] == b[0] and a[-1] == b[-1] and len(a) == len(b):
