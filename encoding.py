@@ -10,9 +10,10 @@ def shuffle_string(string):
 
 
 def garble_word(word):
-    # This function connects original first and last letters with shuffled midst
+    # This function connects original first and last letters with
+    # shuffled midst.
     # No operation needed on sufficiently small words
-    # (Also, main algorithm requires word length >= 2)
+    # (Also, main algorithm requires word length >= 2).
     if len(word) <= 3:
         return word
     # Split word into first & last letter, and middle letters
@@ -21,26 +22,28 @@ def garble_word(word):
 
 
 def garble(sentence):
-    # This function return encoded text
-    # The SEPARATROR is separating the original text from encoded text
+    # This function return encoded text.
+    # The SEPARATROR is separating the original text from encoded text.
     SEPARATOR = "\n-weird-\n"
-    # Find all words consist of more than 3 letters and put it into list named "words"
+    # Find all words consist of more than 3 letters and put it into list
+    # named "words".
     tokenize_re = re.compile(r'(\w\w\w+)', re.U)
     words = tokenize_re.findall(sentence)
-    # letters in "word" can't be the same, example: "biiiiig"
+    # Letters in "word" can't be the same, example: "biiiiig"
     words = [word for word in words if (word[1:-1])[1:] != (word[1:-1])[:-1]]
-    # sort words in the "words" list alphabetically
+    # Sort words in the "words" list alphabetically
     words_sorted = sorted(words, key=str.lower)
-    # encode items in "words" using  function garble_word(word)
+    # Encode items in "words" using  function garble_word(word)
     encoded_part_of_words = [garble_word(word) for word in words if word]
     # If item is the same as before, use "garble_word(word)" again,
-    # else replace item in "words" with exact item in "encoded_part_of_words"
-    # Replace word containing encoded content with original word in original sentence
+    # else replace item in "words" with exact item in "encoded_part_of_words".
+    # Replace word containing encoded content with original word in original
+    # sentence.
     for i in range(0, len(words)):
         while words[i] == encoded_part_of_words[i]:
             encoded_part_of_words[i] = garble_word(words[i])
         sentence = re.sub(words[i], encoded_part_of_words[i], sentence)
-    # Exchange a list "words_sorted" into string and return it
+    # Exchange a list "words_sorted" into string and return it.
     words_sorted = ' '.join(words_sorted)
     encoded_text = SEPARATOR + sentence + SEPARATOR + words_sorted
     return encoded_text
